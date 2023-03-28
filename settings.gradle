@@ -1,0 +1,3 @@
+include ':Grozziie_AAAM'
+include ':app'
+rootProject.name = "MyGrozziie"
