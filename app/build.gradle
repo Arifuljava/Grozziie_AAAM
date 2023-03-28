@@ -7,7 +7,7 @@ android {
         checkReleaseBuilds false
     }
     defaultConfig {
-        applicationId "com.grozziie.mygrozziie"
+        applicationId "com.grozziie.mygrozziiegit"
         minSdkVersion 24
         targetSdkVersion 32
         versionCode 1
