@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\aripu\\AndroidStudioProjects\\MyGrozziie\\sdk.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 32
     //buildToolsVersion "33.0.2"
     lintOptions {
@@ -22,6 +30,7 @@ android {
             minifyEnabled false
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -31,6 +40,9 @@ android {
 }
 
 dependencies {
+    implementation project("::Grozziie_AAAM")
+    implementation 'com.github.Arifuljava:Grozziie_AAAM:v1.0.0'
+   /// implementation 'com.github.Arifuljava:Grozziie_AAAM:v1.0.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

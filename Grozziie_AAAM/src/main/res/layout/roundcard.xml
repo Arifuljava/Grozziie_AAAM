@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="3dp"
+
+    android:layout_centerInParent="true"
+    android:layout_centerVertical="true"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="2dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="120dp"
+        app:cardElevation="4dp"
+        android:layout_marginRight="20dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+               <RelativeLayout
+                   android:layout_centerInParent="true"
+                   android:layout_width="match_parent"
+                   android:layout_centerVertical="true"
+                   android:gravity="center"
+
+                   android:layout_height="match_parent"
+                   >
+                   <ImageView
+                       android:layout_marginRight="30dp"
+                       android:layout_marginLeft="30dp"
+                       android:layout_centerInParent="true"
+                       android:src="@mipmap/ic_launcher"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       ></ImageView>
+               </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
