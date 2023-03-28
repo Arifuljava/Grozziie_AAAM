@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //team
+    <!-- Reply Preference -->
+
+    //
+    <!-- Reply Preference -->
+<string-array name="language">
+    <item>Select a language</item>
+    <item>বাংলা</item>
+    <item>English</item>
+    <item>中國人</item>
+    <item>中国人</item>
+    <item>Melayu</item>
+    <item>Thai</item>
+    <item>แบบไทย</item>
+
+</string-array>
+    //
+
+</resources>

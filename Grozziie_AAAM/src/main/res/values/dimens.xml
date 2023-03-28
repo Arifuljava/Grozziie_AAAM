@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--    <dimen name="design_bottom_navigation_text_size" tools:override="true">6dp</dimen>
+       <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12dp</dimen>
+      <dimen name="design_bottom_navigation_height" tools:override="true">56dp</dimen>-->
+
+    //
+
+    //
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    //
+    <dimen name="space_50dp">50dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+<dimen name="comment_pop_up_width">350dp</dimen>
+
+    //new
+
+</resources>

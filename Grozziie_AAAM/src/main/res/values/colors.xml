@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="close">close</string>
+    <string name="open">open</string>
+
+    ///colorlight
+
+    <color name="green">#00c853</color>
+    <color name="accent">@color/colorAccent</color>
+    <color name="colorPrimary">#039BE6</color>
+    <color name="colorPrimaryDark">#039BE6</color>
+    <color name="colorAccent">#039BE6</color>
+
+    <color name="colorBackground">@android:color/white</color>
+
+    <color name="errorColor">#B71C1C</color>
+    <color name="infoColor">#0F4C81</color>
+    <color name="successColor">#4CAF50</color>
+    <color name="grey">#9f9f9f</color>
+    <color name="colorTextDark">@android:color/black</color>
+
+
+    <!--ImageChooser and Cropper Activity-->
+    <color name="dialog_choose_icon_color">#17A0DB</color>
+    <color name="dialog_choose_text_color">#000000</color>
+    <color name="ucrop_color_active_controls_color">#17A0DB</color>
+    <color name="ucrop_color_inactive_controls_color">#BDBDBD</color>
+    <color name="ucrop_color_widget_rotate_mid_line">#17A0DB</color>
+    <color name="ucrop_color_active_aspect_ratio">#17A0DB</color>
+    <color name="ucrop_color_widget_text">#17A0DB</color>
+</resources>
