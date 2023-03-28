@@ -1,6 +1,4 @@
 # Grozziie_AAAM
-#Grozziie 
-#AAAM
 It is a library package for connecting bluetooth,Wifi , USB and cloud printer on our android device. We can use only one package for connecting those three services.
 
 এটি আমাদের অ্যান্ড্রয়েড ডিভাইসে ব্লুটুথ, ওয়াইফাই, ইউএসবি এবং ক্লাউড প্রিন্টার সংযোগ করার জন্য একটি লাইব্রেরি প্যাকেজ। আমরা এই তিনটি পরিষেবা সংযুক্ত করার জন্য শুধুমাত্র একটি প্যাকেজ ব্যবহার করতে পারি।
