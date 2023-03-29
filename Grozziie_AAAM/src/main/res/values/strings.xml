@@ -11,6 +11,24 @@
     <string name="blue_chi">蓝牙</string>
     <string name="wifi_chi">无线上网</string>
     <string name="cloud_chi">云打印</string>
+    <string name="blueconnect_chi">您的蓝牙现在已禁用。你想启用它吗？</string>
+    <string name="enable_chi">现在不要</string>
+    <string name="not_now_chi">现在不要</string>
+    <string name="device_chi">设备类别</string>
+    <string name="devicc_chi">蓝牙设备</string>
+    <string name="con_chi">确认</string>
+    <string name="bluepeint_chi">您要启用此蓝牙吗？</string>
+    <string name="yes_chi">是的</string>
+    <string name="no_chi">不</string>
+    <string name="paird_chi">配对成功</string>
+    <string name="paird_failed_chi">配对失败</string>
+    <string name="paid_success_chi">配对请求发送成功</string>
+    <string name="device_name_chi">设备名称</string>
+    <string name="device_mac_chi">设备MAC地址</string>
+    <string name="confirmation_chi">确认</string>
+    <string name="printer_details_chi">打印机详细信息</string>
+    <string name="select_blue_ques_chi">您想将这台打印机设置为您的打印机吗？</string>
+    <string name="yes_now_connect_chi">是 现在连接</string>
 
 
     ////mian

@@ -100,7 +100,7 @@
                       android:layout_marginTop="20dp"
                       android:layout_marginRight="30dp"
                       android:layout_marginLeft="30dp"
-                      android:text=""
+                      android:text="Cloud Printing"
                       android:backgroundTint="#355C7D"
                       android:textAllCaps="false"
                       android:textSize="12dp"
