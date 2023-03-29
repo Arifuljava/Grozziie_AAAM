@@ -13,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import es.dmoral.toasty.Toasty;
+////InilizeSdk
+///MD Ariful Islam
+//// Software Engineer at THT Space
+////Date : 29-3-2023
+///Bluetooth SDK
 
 public class CustomLaout {
     public CustomLaout(Context context) {
@@ -36,7 +41,7 @@ public class CustomLaout {
     public  void Toastysuccess(Context context, String message)
     {
 try {
-    AnimationUtils
+    AnimationUtils animationUtils;
     Toast.makeText(context, ""+message, Toast.LENGTH_SHORT).show();
     Dialog mDialouge;
     mDialouge=new Dialog(context);

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="10dp"
+        android:background="@drawable/initilize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               >
+               <com.airbnb.lottie.LottieAnimationView
+                   android:foregroundTint="@color/white"
+                   android:layout_width="50dp"
+                   android:id="@+id/animationone"
+                   android:layout_marginTop="20dp"
+                   android:layout_alignParentRight="false"
+                   android:layout_height="@dimen/space_50dp"
+                   android:layout_centerHorizontal="true"
+                   android:layout_centerInParent="false"
+                   app:lottie_fileName="initilize.json"
+                   app:lottie_loop="true"
+                   app:lottie_autoPlay="true"
+                   android:layout_gravity="center" />
+
+
+               <com.nitish.typewriterview.TypeWriterView
+                   android:layout_below="@id/animationone"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentLeft="true"
+                   android:layout_centerInParent="false"
+                   android:padding="8dp"
+                   android:layout_marginLeft="0dp"
+                   android:textSize="12dp"
+                   android:textAlignment="center"
+                   android:textColor="@color/material_drawer_header_selection_subtext"
+                   android:fontFamily="@font/montserrat"
+                   android:text="ESC Printer"
+                   android:id="@+id/escprinter"
+                   android:textAllCaps="false"
+                   android:textStyle="normal"
+                  android:textColorHint="@color/white"
+
+                   android:gravity="center_horizontal" />
+           </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

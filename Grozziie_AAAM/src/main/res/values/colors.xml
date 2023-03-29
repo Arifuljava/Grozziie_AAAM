@@ -4,7 +4,6 @@
     <string name="open">open</string>
 
     ///colorlight
-
     <color name="green">#00c853</color>
     <color name="accent">@color/colorAccent</color>
     <color name="colorPrimary">#039BE6</color>

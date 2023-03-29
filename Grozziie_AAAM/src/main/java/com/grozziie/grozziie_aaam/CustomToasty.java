@@ -4,6 +4,11 @@ import android.content.Context;
 import android.widget.Toast;
 
 import es.dmoral.toasty.Toasty;
+////InilizeSdk
+///MD Ariful Islam
+//// Software Engineer at THT Space
+////Date : 29-3-2023
+///Bluetooth SDK
 
 public class CustomToasty {
     public CustomToasty(Context context) {

@@ -19,9 +19,14 @@ buildscript {
             name 'Google'
         }
         maven { url "https://jitpack.io" }
+        maven {
+            url = uri("https://storage.googleapis.com/r8-releases/raw")
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
+
+        classpath('com.google.guava:guava:30.1.1-jre')
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -32,6 +37,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url = uri("https://storage.googleapis.com/r8-releases/raw")
+        }
         repositories {
             maven { url "https://jitpack.io" }
         }

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WIFIlISTaCTIVITY">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/gradientbackgroud">
+
+        </androidx.appcompat.widget.Toolbar>
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnTurnOn"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/button2"
+                            android:textColor="@color/white"
+                            android:textStyle="normal"
+                            android:fontFamily="@font/montserrat"
+                            android:textSize="12dp"
+                            android:layout_height="50dp"
+
+                            android:layout_margin="10dp"
+                            android:text="@string/turn_on"/>
+
+                        <Button
+                            android:id="@+id/btnTurnOff"
+                            android:layout_width="0dp"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/button1"
+                            android:textColor="@color/white"
+                            android:textStyle="normal"
+                            android:fontFamily="@font/montserrat"
+                            android:textSize="12dp"
+                            android:layout_height="50dp"
+
+                            android:layout_margin="10dp"
+
+                            android:text="@string/turn_off"/>
+
+                    </LinearLayout>
+                    <Button
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/btnScan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scan_devices"
+                        android:background="@drawable/button1"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/white"
+                        android:textStyle="normal"
+                        android:textSize="12dp"
+                        android:textAllCaps="false"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:layout_margin="11dp"
+                                android:textSize="14sp"
+                                android:gravity="start|bottom"
+                                android:text="@string/paired_devices" />
+
+                        </LinearLayout>
+                        <ListView
+                            android:id="@+id/listViewPairedDevice"
+                            android:layout_width="match_parent"
+                            android:layout_height="256dp"/>
+
+
+                    </LinearLayout>
+                    ///
+                    <LinearLayout
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:layout_margin="11dp"
+                                android:textSize="14sp"
+                                android:gravity="start|bottom"
+                                android:text="@string/available_devices" />
+
+                        </LinearLayout>
+                        <ListView
+                            android:layout_marginBottom="30dp"
+                            android:id="@+id/listview"
+                            android:layout_width="match_parent"
+                            android:layout_height="256dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

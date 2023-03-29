@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">MyGrozziie</string>
+    ///language settings
+    <string name="hhh">Saitunan Harshe</string>
+    <string name="englishname">Language Settings</string>
+    <string name="banglastring">ভাষা ব্যাবস্থা</string>
+    <string name="chiu1">语言设定</string>
+    <string name="chiu2">語言設定</string>
+    <string name="malayu">Tetapan bahasa</string>
+    <string name="thailang">ตั้งค่าภาษา</string>
+    ////mian
+    <string name="app_name">Grozziie</string>
+    <string name="powered_by">Powered by</string>
+    <string name="developer_depository">THT Space Electrical Company Ltd.</string>
+
+    <string name="MainActivity_TapToPair">Tap or Scan to Pair</string>
+    <string name="hausa">Tauraron Dan Adam na Bangabandhu-1 shine sadarwar kasa ta Bangladesh ta farko da tauraron dan adam yada labarai. Sunan ta ne da sunan mahaifin al is umma, Bangabandhu Sheikh Mujibur Rahman. Thales Alenia Space ne ya kera shi kuma aka ƙaddamar da shi a ranar 12 ga Mayu 2018.</string>
+    <string name="english">The Bangabandhu Satellite-1 is the first Bangladeshi geostationary communications and broadcasting satellite. It is named after the father of the nation, Bangabandhu Sheikh Mujibur Rahman. It was manufactured by Thales Alenia Space and launched on 12 May 2018.</string>
+    <string name="bangla">বঙ্গবন্ধু স্যাটেলাইট-১ প্রথম বাংলাদেশি জিওস্টেশনারি কমিউনিকেশন এবং ব্রডকাস্টিং স্যাটেলাইট। জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমানের নামে এর নামকরণ করা হয়েছে। এটি থ্যালেস অ্যালেনিয়া স্পেস দ্বারা উত্পাদিত হয়েছিল এবং 12 মে 2018 সালে চালু হয়েছিল।</string>
+    <string name="china1">Bangabandhu Satellite-1 是孟加拉国第一颗地球静止通信和广播卫星。 它以国父 Bangabandhu Sheikh Mujibur Rahman 的名字命名。 它由 Thales Alenia Space 制造，并于 2018 年 5 月 12 日发射升空。</string>
+    <string name="china2">Bangabandhu Satellite-1 是孟加拉國第一顆地球靜止通信和廣播衛星。 它以國父 Bangabandhu Sheikh Mujibur Rahman 的名字命名。 它由 Thales Alenia Space 製造，並於 2018 年 5 月 12 日發射升空。</string>
+    <string name="malay">Satelit Bangabandhu-1 ialah satelit komunikasi dan penyiaran geopegun pertama Bangladesh. Ia dinamakan sempena bapa negara, Bangabandhu Sheikh Mujibur Rahman. Ia dihasilkan oleh Thales Alenia Space dan dilancarkan pada 12 Mei 2018.</string>
+    <string name="thai">ดาวเทียม Bangabandhu Satellite-1 เป็นดาวเทียมสื่อสารและกระจายเสียงที่อยู่นอกโลกดวงแรกของบังคลาเทศ ได้รับการตั้งชื่อตามบิดาของประเทศ Bangabandhu Sheikh Mujibur Rahman ผลิตโดย Thales Alenia Space และเปิดตัวเมื่อวันที่ 12 พฤษภาคม 2018</string>
+
+    <!-- Welcome Screen Strings -->
+
+    <!-- Sign Up & Login Screen Strings -->
+
+    <!-- Verify OTP Screen Strings -->
+
+    <!-- Forgot Password Screen Strings -->
+
+    <!-- Home Screen Strings -->
 </resources>
