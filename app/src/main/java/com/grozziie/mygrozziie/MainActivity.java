@@ -16,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      startActivity(new Intent(getApplicationContext(), InitilizeSDKActivity.class));
+    startActivity(new Intent(getApplicationContext(), InitilizeSDKActivity.class));
+      //  CustomToasty customToasty=new CustomToasty(MainActivity.this);
+       /// customToasty.SuccessToast(MainActivity.this,"fgfgg");
+
 
     }
 }

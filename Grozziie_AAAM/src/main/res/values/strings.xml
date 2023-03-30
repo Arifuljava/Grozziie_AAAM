@@ -6,48 +6,15 @@
     <string name="geetting_chi">获取数据</string>
     <string name="success_chi">成功完成</string>
     <string name="success">Successfully done</string>
-    <string name="cateselect">Select a device category for see list of active printers. please Select one device.</string>
-    <string name="cateselect_chi">选择设备类别以查看活动打印机列表。请选择一台设备。</string>
-    <string name="blue_chi">蓝牙</string>
-    <string name="wifi_chi">无线上网</string>
-    <string name="cloud_chi">云打印</string>
-    <string name="blueconnect_chi">您的蓝牙现在已禁用。你想启用它吗？</string>
-    <string name="enable_chi">现在不要</string>
-    <string name="not_now_chi">现在不要</string>
-    <string name="device_chi">设备类别</string>
-    <string name="devicc_chi">蓝牙设备</string>
-    <string name="con_chi">确认</string>
-    <string name="bluepeint_chi">您要启用此蓝牙吗？</string>
-    <string name="yes_chi">是的</string>
-    <string name="no_chi">不</string>
-    <string name="paird_chi">配对成功</string>
-    <string name="paird_failed_chi">配对失败</string>
-    <string name="paid_success_chi">配对请求发送成功</string>
-    <string name="device_name_chi">设备名称</string>
-    <string name="device_mac_chi">设备MAC地址</string>
-    <string name="confirmation_chi">确认</string>
-    <string name="printer_details_chi">打印机详细信息</string>
-    <string name="select_blue_ques_chi">您想将这台打印机设置为您的打印机吗？</string>
-    <string name="yes_now_connect_chi">是 现在连接</string>
 
 
     ////mian
     <string name="turn_on">TURN ON</string>
-    <string name="turnon_chi">打开</string>
     <string name="turn_off">TURN OFF</string>
-    <string name="turn_of_chi">关</string>
     <string name="scan_devices">SCAN DEVICES</string>
-    <string name="scan_chi">扫描设备</string>
     <string name="available_devices">AVAILABLE DEVICES</string>
-    <string name="vavil_chi">可用设备</string>
     <string name="paired_devices">PAIRED DEVICES</string>
-    <string name="paied_chi">配对设备</string>
     <string name="app_name">Grozziie</string>
-    <string name="app_chi">格罗齐耶</string>
-    <string name="powered_by">Powered by</string>
-    <string name="power_chi">供电</string>
-    <string name="developer_depository">THT Space Electrical Company Ltd.</string>
-    <string name="compana">THT空间电气有限公司</string>
 
 
     <!-- Welcome Screen Strings -->
@@ -59,4 +26,21 @@
     <!-- Forgot Password Screen Strings -->
 
     <!-- Home Screen Strings -->
+    ////wifi
+    <string name="open_location_service">Please turn on location services</string>
+    <string name="ungot_location_service">Location permission is not obtained or GPS is not turned on</string>
+    <string name="invalid_wifi">invalid WIFI</string>
+    <string name="adhoc_not_supported_yet">AdHoc is not supported by Android platform yet!</string>
+    <string name="no_wifi">No WIFI</string>
+    <string name="connecting">connecting...</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirn</string>
+    <string name="search_on_current_wifi">Currently wifi is connected</string>
+    <string name="please_go_system_wifi_setting">Please go to the system WIFI list for manual WIFI connection</string>
+    <string name="wif_pwd_hint">please enter password</string>
+    <string name="connect_failed">Connection failed</string>
+    <string name="option_failed">operation failed</string>
+    <string name="open_wifi_first">Please turn on WIFI first</string>
+    <string name="connect_success">connection succeeded</string>
+    <string name="grant_net_permission">Please enable network permissions</string>
 </resources>
