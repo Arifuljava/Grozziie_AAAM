@@ -232,11 +232,66 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
         ScanResult scan = mWifiList.get(position);
 
         if (WifiUtils.isCurrentWifi(this, scan.SSID)) {
+            final Dialog mDialog = new Dialog(WifiListActivity.this);
+
+
+            //mDialog = new Dialog(HomeACTIVITY.this);
+            mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //LayoutInflater factory = LayoutInflater.from(this);
+
+            mDialog.setContentView(R.layout.my_new_layout);
+            mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            FloatingActionButton dialogClose=(FloatingActionButton)mDialog.findViewById(R.id.dialogClose);
+            TextView name=(TextView)mDialog.findViewById(R.id.name);
+            name.setText(""+scan.SSID);
+            EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+            TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+            String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+            if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                pwd.setHint("Please enter password");
+                confirm.setText("Confirm");
+            }
+            else {
+                pwd.setHint("请输入密码");
+                confirm.setText("确认");
+            }
+
+            dialogClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mDialog.dismiss();
+                }
+            });
+            pwd.setText(scan.BSSID);
+
+            confirm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String password=pwd.getText().toString();
+                    if (TextUtils.isEmpty(password)) {
+                        String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                        if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                            Toast.makeText(WifiListActivity.this, "Enter  IP address ", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(WifiListActivity.this, "输入IP地址", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    else {
+                    }
+
+
+                }
+            });
+            mDialog.show();
+         /*
             new AlertDialog.Builder(this).setMessage(R.string.search_on_current_wifi).setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                 }
             }).create().show();
+          */
 
         } else {
             ///  Toast.makeText(this, "dddd", Toast.LENGTH_SHORT).show();

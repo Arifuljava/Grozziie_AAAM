@@ -317,7 +317,9 @@ public class BluetoothList extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                               /// if (listPairedBluetoothDevices.get(position).getName())
+                            if (listPairedBluetoothDevices.get(position).getName().toLowerCase().equals("ac695x_1")) {
+                                Toast.makeText(BluetoothList.this, ""+listPairedBluetoothDevices.get(position).getName().toLowerCase(), Toast.LENGTH_SHORT).show();
+                            }
                             }
                         }).create();
                         builder.show();
