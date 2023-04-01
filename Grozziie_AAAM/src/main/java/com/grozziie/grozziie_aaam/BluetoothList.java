@@ -26,6 +26,7 @@ import com.psp.bluetoothlibrary.Bluetooth;
 import com.psp.bluetoothlibrary.BluetoothListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BluetoothList extends AppCompatActivity {
     private static final String TAG = "psp.BluetoothAct";
@@ -47,7 +48,14 @@ public class BluetoothList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_list);
         Toolbar toolbar=findViewById(R.id.profile_toolbar);
-        toolbar.setTitle("Bluetooth Devices");
+        String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+        if (defaultlanguage.toLowerCase().toString().equals("english")) {
+            toolbar.setTitle("Bluetooth Devices");
+        }
+        else {
+            toolbar.setTitle("蓝牙设备");
+        }
+
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_myarrow);
@@ -87,22 +95,47 @@ public class BluetoothList extends AppCompatActivity {
 
                 // Without user permission
                 // bluetooth.turnOnWithoutPermission();
-                AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
-                builder.setTitle("Confirmation")
-                        .setMessage("Do you want to enable this bluetooth?")
-                        .setPositiveButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }).setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        bluetooth.turnOnWithPermission(BluetoothList.this);
-                    }
-                }).create();
-                builder.show();
+                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+
+                    AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                    builder.setTitle("Confirmation")
+                            .setMessage("Do you want to enable this bluetooth?")
+                            .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetooth.turnOnWithPermission(BluetoothList.this);
+                        }
+                    }).create();
+                    builder.show();
+                }
+                else {
+
+                    AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                    builder.setTitle("确认")
+                            .setMessage("您要启用此蓝牙吗？")
+                            .setPositiveButton("不", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).setNegativeButton("是的", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetooth.turnOnWithPermission(BluetoothList.this);
+                        }
+                    }).create();
+                    builder.show();
+                }
+
+
             }
         });
 
@@ -110,22 +143,45 @@ public class BluetoothList extends AppCompatActivity {
         btnTurnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
-                builder.setTitle("Confirmation")
-                        .setMessage("Do you want to enable this bluetooth?")
-                        .setPositiveButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }).setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        bluetooth.turnOff(); // turn off
-                    }
-                }).create();
-                builder.show();
+                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                    builder.setTitle("Confirmation")
+                            .setMessage("Do you want to enable this bluetooth?")
+                            .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetooth.turnOff(); // turn off
+                        }
+                    }).create();
+                    builder.show();
+                }
+                else {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                    builder.setTitle("确认")
+                            .setMessage("您要启用此蓝牙吗？")
+                            .setPositiveButton("不", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).setNegativeButton("是的", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetooth.turnOff(); // turn off
+                        }
+                    }).create();
+                    builder.show();
+                }
+
+
 
             }
         });
@@ -176,7 +232,15 @@ public class BluetoothList extends AppCompatActivity {
             @Override
             public void onDevicePaired(BluetoothDevice device) {
                 Log.d(TAG,device.getName()+" Paired successfull");
-                Toast.makeText(BluetoothList.this, device.getName()+" Paired successfull", Toast.LENGTH_SHORT).show();
+                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                    Toast.makeText(BluetoothList.this, device.getName()+" Paired successfull", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(BluetoothList.this, device.getName()+" 配对成功", Toast.LENGTH_SHORT).show();
+                }
+
+
 
                 // remove device from detect device list
                 listDetectDevicesString.remove(device.getName());
@@ -191,7 +255,15 @@ public class BluetoothList extends AppCompatActivity {
 
             @Override
             public void onCancelled(BluetoothDevice device) {
-                Toast.makeText(BluetoothList.this, device.getName()+" Paired failed", Toast.LENGTH_SHORT).show();
+                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                    Toast.makeText(BluetoothList.this, device.getName()+" Paired failed", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(BluetoothList.this, device.getName()+"配对失败", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -200,7 +272,14 @@ public class BluetoothList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(bluetooth.requestPairDevice(listDetectBluetoothDevices.get(position))) {
                     Log.d(TAG,"Pair request send successfully");
-                    Toast.makeText(BluetoothList.this, "Pair request send successfully", Toast.LENGTH_SHORT).show();
+                    String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                    if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                        Toast.makeText(BluetoothList.this, "Pair request send successfully", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(BluetoothList.this, "配对请求发送成功", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -222,23 +301,47 @@ public class BluetoothList extends AppCompatActivity {
                    // listPairedDevicesString.remove(position);
                     //listPairedBluetoothDevices.remove(position);
                    /// adapterPairedBluetoothDevices.notifyDataSetChanged();
-                    String mesge="Device Name : "+listPairedBluetoothDevices.get(position).getName()+"\n" +
-                            "Device MAC Address : "+listPairedBluetoothDevices.get(position).getAddress();
-                    AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
-                    builder.setTitle("Confirmation")
-                            .setMessage("Printer Details\n"+mesge+"\n\nDo you want to set this printer as your printer?")
-                            .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                    String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                    if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                        String mesge="Device Name : "+listPairedBluetoothDevices.get(position).getName()+"\n" +
+                                "Device MAC Address : "+listPairedBluetoothDevices.get(position).getAddress();
+                        AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                        builder.setTitle("Confirmation")
+                                .setMessage("Printer Details\n"+mesge+"\n\nDo you want to set this printer as your printer?")
+                                .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                                }
-                            }).setNegativeButton("YES CONNECT NOW", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).create();
-                    builder.show();
+                                    }
+                                }).setNegativeButton("YES CONNECT NOW", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                               /// if (listPairedBluetoothDevices.get(position).getName())
+                            }
+                        }).create();
+                        builder.show();
+                    }
+                    else {
+                        String mesge="设备名称 : "+listPairedBluetoothDevices.get(position).getName()+"\n" +
+                                "设备MAC地址 : "+listPairedBluetoothDevices.get(position).getAddress();
+                        AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
+                        builder.setTitle("确认")
+                                .setMessage("Printer Details\n"+mesge+"\n\nDo you want to set this printer as your printer?")
+                                .setPositiveButton("现在不要", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                }).setNegativeButton("是 现在连接", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).create();
+                        builder.show();
+                    }
+
 
 
                 }

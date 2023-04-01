@@ -62,10 +62,10 @@ public class InitilizeSDKActivity extends AppCompatActivity {
             public void run() {
                 String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
                 if (defaultlanguage.toLowerCase().toString().equals("english")) {
-                    Toasty.success(InitilizeSDKActivity.this,""+R.string.success,Toasty.LENGTH_SHORT,true).show();
+                    Toasty.success(InitilizeSDKActivity.this,"Initilize Successfully",Toasty.LENGTH_SHORT,true).show();
                 }
                 else {
-                    escprinter.setText(R.string.geetting_chi);  Toasty.success(InitilizeSDKActivity.this,""+R.string.success_chi,Toasty.LENGTH_SHORT,true).show();
+                    escprinter.setText(R.string.geetting_chi);  Toasty.success(InitilizeSDKActivity.this,"初始化成功",Toasty.LENGTH_SHORT,true).show();
                 }
 
 

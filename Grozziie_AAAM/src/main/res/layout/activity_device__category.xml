@@ -73,6 +73,7 @@
                       android:textColor="@color/white"
                       android:textStyle="normal"
                       android:textSize="12dp"
+                      android:id="@+id/button_bluetooth"
                       android:textAllCaps="false"
                       android:onClick="bluetooth"
 
@@ -89,11 +90,13 @@
                       android:textAllCaps="false"
                       android:textSize="12dp"
                       android:onClick="wifi"
+                      android:id="@+id/button_wifi"
                       android:textColor="@color/white"
                       android:background="@drawable/button2"
                       android:textStyle="normal"
                       ></Button>
                   <Button
+                      android:id="@+id/button_cloud"
                       android:textColor="@color/white"
                       android:layout_width="match_parent"
                       android:layout_height="50dp"

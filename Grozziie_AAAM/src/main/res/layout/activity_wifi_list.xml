@@ -8,14 +8,58 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/gradientbackgroud">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                >
+                <ImageView
+                    android:id="@+id/top_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_aorroi" />
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <TextView
+                    android:id="@+id/top_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Wifi List"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="12dp"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/top_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@android:color/darker_gray" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+        <RelativeLayout
+            android:visibility="gone"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white">
 
             <ImageView
-                android:id="@+id/top_back"
+                android:id="@+id/top_back1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -25,7 +69,7 @@
                 android:src="@drawable/top_back" />
 
             <TextView
-                android:id="@+id/top_title"
+                android:id="@+id/top_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -36,7 +80,7 @@
                 android:textStyle="bold" />
 
             <View
-                android:id="@+id/top_divider"
+                android:id="@+id/top_divid1er"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"

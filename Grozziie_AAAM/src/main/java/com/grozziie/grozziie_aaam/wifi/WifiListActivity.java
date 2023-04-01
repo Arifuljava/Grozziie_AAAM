@@ -2,6 +2,7 @@ package com.grozziie.grozziie_aaam.wifi;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -42,6 +43,7 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -87,6 +89,21 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_list);
+        Toolbar toolbar=findViewById(R.id.profile_toolbar);
+        String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+        if (defaultlanguage.toLowerCase().toString().equals("english")) {
+            toolbar.setTitle("Wifi List");
+        }
+        else {
+            toolbar.setTitle("Wifi 列表");
+        }
+
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitleTextColor(Color.WHITE);
+
+
+
+
         mRefreshView = findViewById(R.id.swipe);
         mListView = findViewById(R.id.listView);
         mRxPermissions = new RxPermissions(this);
@@ -261,6 +278,16 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                 TextView name=(TextView)mDialog.findViewById(R.id.name);
                                 name.setText(""+network.SSID);
                                 EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                    pwd.setHint("Please enter password");
+                                    confirm.setText("Confirm");
+                                }
+                                else {
+                                    pwd.setHint("请输入密码");
+                                    confirm.setText("确认");
+                                }
 
                                 dialogClose.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -268,13 +295,20 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                         mDialog.dismiss();
                                     }
                                 });
-                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+
                                 confirm.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                            if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                                Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                Toast.makeText(WifiListActivity.this, "输入密码", Toast.LENGTH_SHORT).show();
+                                            }
+
                                         }
                                         else {
                                             ConnectToNetworkWPA(network.SSID,password);
@@ -302,6 +336,16 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                 TextView name=(TextView)mDialog.findViewById(R.id.name);
                                 name.setText(""+network.SSID);
                                 EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                    pwd.setHint("Please enter password");
+                                    confirm.setText("Confirm");
+                                }
+                                else {
+                                    pwd.setHint("请输入密码");
+                                    confirm.setText("确认");
+                                }
 
                                 dialogClose.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -309,13 +353,19 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                         mDialog.dismiss();
                                     }
                                 });
-                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+
                                 confirm.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                            if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                                Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                Toast.makeText(WifiListActivity.this, "输入密码", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                         else {
                                             ConnectToNetworkWPA(network.SSID,password);
@@ -342,6 +392,17 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                 TextView name=(TextView)mDialog.findViewById(R.id.name);
                                 name.setText(""+network.SSID);
                                 EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                    pwd.setHint("Please enter password");
+                                    confirm.setText("Confirm");
+                                }
+                                else {
+                                    pwd.setHint("请输入密码");
+                                    confirm.setText("确认");
+                                }
+
 
                                 dialogClose.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -349,13 +410,19 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                         mDialog.dismiss();
                                     }
                                 });
-                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                //TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
                                 confirm.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                                            if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                                                Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                Toast.makeText(WifiListActivity.this, "输入密码", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                         else {
                                             ConnectToNetworkWEP(network.SSID,password);

@@ -19,6 +19,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grozziie.grozziie_aaam.wifi.AllWifiList;
@@ -26,6 +28,7 @@ import com.grozziie.grozziie_aaam.wifi.WifiListActivity;
 import com.tapadoo.alerter.Alert;
 
 import java.util.List;
+import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 ////InilizeSdk
@@ -39,6 +42,8 @@ public class Device_CategoryActivity extends AppCompatActivity {
 BluetoothAdapter bluetoothAdapter;
 BluetoothSocket bluetoothSocket;
 BluetoothDevice bluetoothDevice;
+TextView  sign_in_title;
+Button button_bluetooth,button_wifi,button_cloud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,27 @@ BluetoothDevice bluetoothDevice;
         setContentView(R.layout.activity_device__category);
         /////initilize all things
         Toolbar toolbar=findViewById(R.id.profile_toolbar);
-        toolbar.setTitle("Device Category");
+        sign_in_title=findViewById(R.id.sign_in_title);
+        button_bluetooth=findViewById(R.id.button_bluetooth);
+        button_wifi=findViewById(R.id.button_wifi);
+        button_cloud=findViewById(R.id.button_cloud);
+
+        String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+        if (defaultlanguage.toLowerCase().toString().equals("english")) {
+            toolbar.setTitle(R.string.device_title);
+            sign_in_title.setText(R.string.catedes);
+            button_bluetooth.setText(R.string.bluetooth);
+            button_wifi.setText(R.string.wifi);
+            button_cloud.setText(R.string.cloud_print);
+        }
+        else {
+            toolbar.setTitle(R.string.device_title_chai);
+            sign_in_title.setText(R.string.catedes_chai);
+            button_bluetooth.setText(R.string.blue_chai);
+            button_wifi.setText(R.string.wifi_chai);
+            button_cloud.setText(R.string.cloud_printing_chai);
+        }
+
         toolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar();
 
@@ -58,32 +83,60 @@ BluetoothDevice bluetoothDevice;
         }catch (Exception e) {
             e.printStackTrace();
         }
+        //////textview
     }
 
     public void bluetooth(View view) {
         try {
             bluetoothAdapter=BluetoothAdapter.getDefaultAdapter();
             if (!bluetoothAdapter.isEnabled()) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
-                builder.setTitle("Bluetooth")
-                        .setMessage("Your bluetooth is disable now.\nDo you want to enable it?")
-                        .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+                if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
+                    builder.setTitle("Bluetooth")
+                            .setMessage("Your bluetooth is disable now.\nDo you want to enable it?")
+                            .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
 
-                            }
-                        }).setNegativeButton("ENABLE NOW", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        bluetoothAdapter.enable();
-                        bluetoothAdapter.enable();
+                                }
+                            }).setNegativeButton("ENABLE NOW", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetoothAdapter.enable();
+                            bluetoothAdapter.enable();
 
 
-                    }
-                }).create();
-                builder.show();
+                        }
+                    }).create();
+                    builder.show();
+
+                }
+                else {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
+                    builder.setTitle(R.string.blue_chai)
+                            .setMessage("您的蓝牙现在已禁用。你想启用它吗？")
+                            .setPositiveButton("现在不要", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+
+                                }
+                            }).setNegativeButton("立即启用", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            bluetoothAdapter.enable();
+                            bluetoothAdapter.enable();
+
+
+                        }
+                    }).create();
+                    builder.show();
+                }
+
             }
             else {
                 startActivity(new Intent(getApplicationContext(),BluetoothList.class));
@@ -100,40 +153,77 @@ BluetoothDevice bluetoothDevice;
 
         if (wifiInfo.isConnected()) {
             // WiFi is connected
-            startActivity(new Intent(getApplicationContext(), AllWifiList.class));
+            startActivity(new Intent(getApplicationContext(), WifiListActivity.class));
         } else {
             // WiFi is not connected
-            AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
-            builder.setTitle("Wifi")
-                    .setMessage("Your wifi is disable now.\nDo you want to enable it?")
-                    .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
+            String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
+            if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
+                builder.setTitle("Wifi")
+                        .setMessage("Your wifi is disable now.\nDo you want to enable it?")
+                        .setPositiveButton("NOT NOW", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
 
+                            }
+                        }).setNegativeButton("See Wifi List", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo wifiInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+                        if (wifiInfo.isConnected()) {
+                            // WiFi is connected
+                            startActivity(new Intent(getApplicationContext(), WifiListActivity.class));
                         }
-                    }).setNegativeButton("See Wifi List", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                    NetworkInfo wifiInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+                        else {
+                            Toasty.error(getApplicationContext(),"Your wifi is disable now. Do you want to enable it?",Toasty.LENGTH_SHORT,true).show();
+                            return;
+                        }
 
-                    if (wifiInfo.isConnected()) {
-                        // WiFi is connected
-                        startActivity(new Intent(getApplicationContext(), AllWifiList.class));
+
+
+
                     }
-                    else {
-                        Toasty.error(getApplicationContext(),"Your wifi is disable now. Do you want to enable it?",Toasty.LENGTH_SHORT,true).show();
-                        return;
+                }).create();
+                builder.show();
+            }
+            else {
+                AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
+                builder.setTitle("无线上网")
+                        .setMessage("您的 wifi 现在已禁用。您要启用它吗？")
+                        .setPositiveButton("现在不要", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        }).setNegativeButton("查看 Wifi 列表", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo wifiInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+                        if (wifiInfo.isConnected()) {
+                            // WiFi is connected
+                            startActivity(new Intent(getApplicationContext(), WifiListActivity.class));
+                        }
+                        else {
+                            Toasty.error(getApplicationContext(),"您的 wifi 现在已禁用。你想启用它吗？",Toasty.LENGTH_SHORT,true).show();
+                            return;
+                        }
+
+
+
+
                     }
+                }).create();
+                builder.show();
+            }
 
-
-
-
-                }
-            }).create();
-            builder.show();
         }
 
 /*
@@ -172,5 +262,9 @@ BluetoothDevice bluetoothDevice;
             builder.show();
         }
  */
+    }
+
+    public void cloud(View view) {
+        startActivity(new Intent(getApplicationContext(), MainActivit33.class));
     }
 }

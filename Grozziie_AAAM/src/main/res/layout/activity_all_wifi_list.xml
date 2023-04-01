@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 >
-                0
+
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -38,6 +38,41 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
+                <RelativeLayout
+                    android:visibility="gone" xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/top_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:padding="10dp"
+                        android:src="@drawable/top_back" />
+
+                    <TextView
+                        android:id="@+id/top_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/top_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/darker_gray" />
+                </RelativeLayout>
+
 
                 <FrameLayout
                     android:layout_width="match_parent"
