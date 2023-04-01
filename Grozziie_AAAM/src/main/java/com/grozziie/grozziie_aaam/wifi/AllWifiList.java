@@ -1,7 +1,13 @@
 package com.grozziie.grozziie_aaam.wifi;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.grozziie.grozziie_aaam.R;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -58,9 +64,7 @@ import static android.content.ContentValues.TAG;
 import static com.grozziie.grozziie_aaam.wifi.Constants.TIME_REFRESH_WIFI_INTERVAL;
 import static com.grozziie.grozziie_aaam.wifi.Constants.TIME_SCAN_DELAY_LONG;
 import static com.grozziie.grozziie_aaam.wifi.Constants.TIME_SCAN_DELAY_NORMAL;
-
-
-public class WifiListActivity extends FragmentActivity implements AdapterView.OnItemClickListener, InputWifiPwdFragment.WifiPwdInputListener {
+public class AllWifiList extends FragmentActivity implements AdapterView.OnItemClickListener, InputWifiPwdFragment.WifiPwdInputListener {
 
     private long mScanTimeDelay = TIME_SCAN_DELAY_NORMAL;
     private Disposable mScanWifiDisposable = null;
@@ -82,11 +86,19 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wifi_list);
+        setContentView(R.layout.activity_all_wifi_list);
+        Toolbar toolbar=findViewById(R.id.profile_toolbar);
+        toolbar.setTitle("Bluetooth Devices");
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setNavigationIcon(R.drawable.ic_myarrow);
+
+
+
+
         mRefreshView = findViewById(R.id.swipe);
         mListView = findViewById(R.id.listView);
         mRxPermissions = new RxPermissions(this);
@@ -113,7 +125,7 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
     protected void getWifiList() {
         mRxPermissions.request(ACCESS_WIFI_STATE, CHANGE_WIFI_STATE, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION).subscribe(granted -> {
             if (granted) {
-                if (PhoneUtils.isGpsEnable(WifiListActivity.this)) {
+                if (PhoneUtils.isGpsEnable(AllWifiList.this)) {
                     Observable.timer(mScanTimeDelay, TimeUnit.MILLISECONDS).observeOn(
                             AndroidSchedulers.mainThread()
                     ).subscribe(aLong ->
@@ -140,7 +152,7 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
             if (result) {
                 mScanTimeDelay = TIME_SCAN_DELAY_LONG;
             } else {
-                Toast.makeText(WifiListActivity.this, "Please go to the system WIFI list for manual WIFI connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AllWifiList.this, "Please go to the system WIFI list for manual WIFI connection", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
             }
@@ -246,9 +258,9 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                             //get capabilities of current connection
                             String capabilities =  network.capabilities;
                             Log.d(TAG, network.SSID + " capabilities : " + capabilities);
-                           /// Toast.makeText(this, network.SSID+""+currentSSID+" "+capabilities, Toast.LENGTH_SHORT).show();
+                            /// Toast.makeText(this, network.SSID+""+currentSSID+" "+capabilities, Toast.LENGTH_SHORT).show();
                             if (capabilities.contains("WPA2")) {
-                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+                                final Dialog mDialog = new Dialog(AllWifiList.this);
 
 
                                 //mDialog = new Dialog(HomeACTIVITY.this);
@@ -274,12 +286,12 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, "Enter password", Toast.LENGTH_SHORT).show();
                                         }
                                         else {
                                             ConnectToNetworkWPA(network.SSID,password);
                                             boolean status= ConnectToNetworkWPA(network.SSID,password);
-                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, ""+status, Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
@@ -289,7 +301,7 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
 
                                 //do something
                             } else if (capabilities.contains("WPA")) {
-                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+                                final Dialog mDialog = new Dialog(AllWifiList.this);
 
 
                                 //mDialog = new Dialog(HomeACTIVITY.this);
@@ -315,12 +327,12 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, "Enter password", Toast.LENGTH_SHORT).show();
                                         }
                                         else {
                                             ConnectToNetworkWPA(network.SSID,password);
                                             boolean status= ConnectToNetworkWPA(network.SSID,password);
-                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, ""+status, Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
@@ -329,7 +341,7 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                 //do something
                             } else if (capabilities.contains("WEP")) {
                                 //do something
-                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+                                final Dialog mDialog = new Dialog(AllWifiList.this);
 
 
                                 //mDialog = new Dialog(HomeACTIVITY.this);
@@ -355,12 +367,12 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                                     public void onClick(View v) {
                                         String password=pwd.getText().toString();
                                         if (TextUtils.isEmpty(password)) {
-                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, "Enter password", Toast.LENGTH_SHORT).show();
                                         }
                                         else {
                                             ConnectToNetworkWEP(network.SSID,password);
                                             boolean status= ConnectToNetworkWEP(network.SSID,password);
-                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AllWifiList.this, ""+status, Toast.LENGTH_SHORT).show();
                                         }
 
                                     }

@@ -10,11 +10,21 @@
 
     ////mian
     <string name="turn_on">TURN ON</string>
+    <string name="turn_on_chi">打开</string>
+
     <string name="turn_off">TURN OFF</string>
+    <string name="turn_off_chai">关</string>
+
     <string name="scan_devices">SCAN DEVICES</string>
+    <string name="scan_devices_chai">扫描设备</string>
+
     <string name="available_devices">AVAILABLE DEVICES</string>
-    <string name="paired_devices">PAIRED DEVICES</string>
+    <string name="available_devices_chai">可用设备</string>
+
+    <string name="paired_devices_chai">PAIRED DEVICES</string>
+    <string name="paired_devices">配对设备</string>
     <string name="app_name">Grozziie</string>
+    <string name="app_name_chai">格罗齐耶</string>
 
 
     <!-- Welcome Screen Strings -->
@@ -28,19 +38,51 @@
     <!-- Home Screen Strings -->
     ////wifi
     <string name="open_location_service">Please turn on location services</string>
+    <string name="open_location_service_chai">请开启定位服务</string>
+
     <string name="ungot_location_service">Location permission is not obtained or GPS is not turned on</string>
+    <string name="ungot_location_service_chai">未获取定位权限或未开启GPS</string>
+
     <string name="invalid_wifi">invalid WIFI</string>
+    <string name="invalid_wifi_chai">无效WIFI</string>
+
     <string name="adhoc_not_supported_yet">AdHoc is not supported by Android platform yet!</string>
+    <string name="adhoc_not_supported_yet_chai">Android 平台暂不支持 AdHoc！</string>
+
     <string name="no_wifi">No WIFI</string>
+    <string name="no_wifi_chai">没有WIFI</string>
+
     <string name="connecting">connecting...</string>
+    <string name="connecting_chai">连接...</string>
+
     <string name="cancel">Cancel</string>
+    <string name="cancel_chai">取消</string>
+
     <string name="confirm">Confirn</string>
+    <string name="confirm_chai">确认</string>
+
     <string name="search_on_current_wifi">Currently wifi is connected</string>
+    <string name="search_on_current_wifi_chai">当前wifi已连接</string>
+
     <string name="please_go_system_wifi_setting">Please go to the system WIFI list for manual WIFI connection</string>
+    <string name="please_go_system_wifi_setting_chai">手动WIFI连接请进入系统WIFI列表</string>
+
     <string name="wif_pwd_hint">Please enter password</string>
+    <string name="wif_pwd_hint_chai">请输入密码</string>
+
     <string name="connect_failed">Connection failed</string>
+    <string name="connect_failed_chai">连接失败</string>
+
     <string name="option_failed">operation failed</string>
+    <string name="option_failed_chai">手术失败</string>
+
     <string name="open_wifi_first">Please turn on WIFI first</string>
+    <string name="open_wifi_first_chai">请先开启WIFI</string>
+
+
     <string name="connect_success">connection succeeded</string>
+    <string name="connect_success_chai">连接成功</string>
+
     <string name="grant_net_permission">Please enable network permissions</string>
+    <string name="grant_net_permission_chai">请启用网络权限</string>
 </resources>

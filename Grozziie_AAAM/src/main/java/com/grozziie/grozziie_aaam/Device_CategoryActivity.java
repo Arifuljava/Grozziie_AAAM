@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.grozziie.grozziie_aaam.wifi.AllWifiList;
 import com.grozziie.grozziie_aaam.wifi.WifiListActivity;
 import com.tapadoo.alerter.Alert;
 
@@ -99,7 +100,7 @@ BluetoothDevice bluetoothDevice;
 
         if (wifiInfo.isConnected()) {
             // WiFi is connected
-            startActivity(new Intent(getApplicationContext(), WifiListActivity.class));
+            startActivity(new Intent(getApplicationContext(), AllWifiList.class));
         } else {
             // WiFi is not connected
             AlertDialog.Builder builder=new AlertDialog.Builder(Device_CategoryActivity.this);
@@ -120,7 +121,7 @@ BluetoothDevice bluetoothDevice;
 
                     if (wifiInfo.isConnected()) {
                         // WiFi is connected
-                        startActivity(new Intent(getApplicationContext(), WifiListActivity.class));
+                        startActivity(new Intent(getApplicationContext(), AllWifiList.class));
                     }
                     else {
                         Toasty.error(getApplicationContext(),"Your wifi is disable now. Do you want to enable it?",Toasty.LENGTH_SHORT,true).show();
