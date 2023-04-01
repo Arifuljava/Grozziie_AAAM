@@ -7,10 +7,14 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Dialog;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.wifi.WifiInfo;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grozziie.grozziie_aaam.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -28,11 +32,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -240,12 +248,124 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
                             Log.d(TAG, network.SSID + " capabilities : " + capabilities);
                             Toast.makeText(this, network.SSID+""+currentSSID+" "+capabilities, Toast.LENGTH_SHORT).show();
                             if (capabilities.contains("WPA2")) {
+                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+
+
+                                //mDialog = new Dialog(HomeACTIVITY.this);
+                                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                //LayoutInflater factory = LayoutInflater.from(this);
+
+                                mDialog.setContentView(R.layout.new_layout);
+                                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                FloatingActionButton dialogClose=(FloatingActionButton)mDialog.findViewById(R.id.dialogClose);
+                                TextView name=(TextView)mDialog.findViewById(R.id.name);
+                                name.setText(""+network.SSID);
+                                EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+
+                                dialogClose.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mDialog.dismiss();
+                                    }
+                                });
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                confirm.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String password=pwd.getText().toString();
+                                        if (TextUtils.isEmpty(password)) {
+                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            ConnectToNetworkWPA(network.SSID,password);
+                                            boolean status= ConnectToNetworkWPA(network.SSID,password);
+                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+                                });
+                                mDialog.show();
+
 
                                 //do something
                             } else if (capabilities.contains("WPA")) {
+                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+
+
+                                //mDialog = new Dialog(HomeACTIVITY.this);
+                                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                //LayoutInflater factory = LayoutInflater.from(this);
+
+                                mDialog.setContentView(R.layout.new_layout);
+                                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                FloatingActionButton dialogClose=(FloatingActionButton)mDialog.findViewById(R.id.dialogClose);
+                                TextView name=(TextView)mDialog.findViewById(R.id.name);
+                                name.setText(""+network.SSID);
+                                EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+
+                                dialogClose.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mDialog.dismiss();
+                                    }
+                                });
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                confirm.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String password=pwd.getText().toString();
+                                        if (TextUtils.isEmpty(password)) {
+                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            ConnectToNetworkWPA(network.SSID,password);
+                                            boolean status= ConnectToNetworkWPA(network.SSID,password);
+                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+                                });
+                                mDialog.show();
                                 //do something
                             } else if (capabilities.contains("WEP")) {
                                 //do something
+                                final Dialog mDialog = new Dialog(WifiListActivity.this);
+
+
+                                //mDialog = new Dialog(HomeACTIVITY.this);
+                                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                //LayoutInflater factory = LayoutInflater.from(this);
+
+                                mDialog.setContentView(R.layout.new_layout);
+                                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                FloatingActionButton dialogClose=(FloatingActionButton)mDialog.findViewById(R.id.dialogClose);
+                                TextView name=(TextView)mDialog.findViewById(R.id.name);
+                                name.setText(""+network.SSID);
+                                EditText pwd=(EditText)mDialog.findViewById(R.id.pwd);
+
+                                dialogClose.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mDialog.dismiss();
+                                    }
+                                });
+                                TextView confirm=(TextView)mDialog.findViewById(R.id.confirm);
+                                confirm.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String password=pwd.getText().toString();
+                                        if (TextUtils.isEmpty(password)) {
+                                            Toast.makeText(WifiListActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            ConnectToNetworkWEP(network.SSID,password);
+                                            boolean status= ConnectToNetworkWEP(network.SSID,password);
+                                            Toast.makeText(WifiListActivity.this, ""+status, Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+                                });
+                                mDialog.show();
                             }
                         }
                     }
@@ -257,6 +377,88 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
 
         }
 
+    }
+    public boolean ConnectToNetworkWEP( String networkSSID, String password )
+    {
+        try {
+            WifiConfiguration conf = new WifiConfiguration();
+            conf.SSID = "\"" + networkSSID + "\"";   // Please note the quotes. String should contain SSID in quotes
+            conf.wepKeys[0] = "\"" + password + "\""; //Try it with quotes first
+
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+            conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
+            conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
+
+
+            WifiManager wifiManager = (WifiManager) this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            int networkId = wifiManager.addNetwork(conf);
+
+            if (networkId == -1){
+                //Try it again with no quotes in case of hex password
+                conf.wepKeys[0] = password;
+                networkId = wifiManager.addNetwork(conf);
+            }
+
+            List<WifiConfiguration> list = wifiManager.getConfiguredNetworks();
+            for( WifiConfiguration i : list ) {
+                if(i.SSID != null && i.SSID.equals("\"" + networkSSID + "\"")) {
+                    wifiManager.disconnect();
+                    wifiManager.enableNetwork(i.networkId, true);
+                    wifiManager.reconnect();
+                    break;
+                }
+            }
+
+            //WiFi Connection success, return true
+            return true;
+        } catch (Exception ex) {
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return false;
+        }
+    }
+    public boolean ConnectToNetworkWPA( String networkSSID, String password )
+    {
+        try {
+            WifiConfiguration conf = new WifiConfiguration();
+            conf.SSID = "\"" + networkSSID + "\"";   // Please note the quotes. String should contain SSID in quotes
+
+            conf.preSharedKey = "\"" + password + "\"";
+
+            conf.status = WifiConfiguration.Status.ENABLED;
+            conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+            conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+            conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+
+            Log.d("connecting", conf.SSID + " " + conf.preSharedKey);
+
+            WifiManager wifiManager = (WifiManager) this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            wifiManager.addNetwork(conf);
+
+            Log.d("after connecting", conf.SSID + " " + conf.preSharedKey);
+
+
+
+            List<WifiConfiguration> list = wifiManager.getConfiguredNetworks();
+            for( WifiConfiguration i : list ) {
+                if(i.SSID != null && i.SSID.equals("\"" + networkSSID + "\"")) {
+                    wifiManager.disconnect();
+                    wifiManager.enableNetwork(i.networkId, true);
+                    wifiManager.reconnect();
+                    Log.d("re connecting", i.SSID + " " + conf.preSharedKey);
+
+                    break;
+                }
+            }
+
+
+            //WiFi Connection success, return true
+            return true;
+        } catch (Exception ex) {
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return false;
+        }
     }
     private String getEncryptionType(WifiConfiguration config) {
         String encryptionType = "";

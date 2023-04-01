@@ -37,7 +37,7 @@
     <string name="confirm">Confirn</string>
     <string name="search_on_current_wifi">Currently wifi is connected</string>
     <string name="please_go_system_wifi_setting">Please go to the system WIFI list for manual WIFI connection</string>
-    <string name="wif_pwd_hint">please enter password</string>
+    <string name="wif_pwd_hint">Please enter password</string>
     <string name="connect_failed">Connection failed</string>
     <string name="option_failed">operation failed</string>
     <string name="open_wifi_first">Please turn on WIFI first</string>
