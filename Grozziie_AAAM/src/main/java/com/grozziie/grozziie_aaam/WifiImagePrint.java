@@ -15,16 +15,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.grozziie.grozziie_aaam.print_bluetooth.PrinterCommands;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -35,8 +38,11 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.BitSet;
 import java.util.UUID;
 
 public class WifiImagePrint extends AppCompatActivity {
@@ -80,6 +86,7 @@ Uri imageuri;
     }
     Bitmap bitmapImageUri;
     String displayName=null;
+    File file;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -95,31 +102,20 @@ Uri imageuri;
                     inputStream.close();
                     ContentResolver contentResolver=getContentResolver();
                     Cursor cursor=contentResolver.query(imageuri,null,null,null,null);
-                    if (cursor!=null && cursor.moveToFirst()) {
-                        int displayIndex=cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                        displayName=cursor.getString(displayIndex);
-                    }
-                    cursor.close();
-                    Toast.makeText(this, ""+displayName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "ff"+getPixelsSlow(bitmap), Toast.LENGTH_SHORT).show();
+
+                  //  Toast.makeText(this, ""+displayName, Toast.LENGTH_SHORT).show();
 
 
-                    Toast.makeText(this, ""+bitmap, Toast.LENGTH_SHORT).show();
+
+                    ///Toast.makeText(this, ""+bitmap, Toast.LENGTH_SHORT).show();
                 }catch (Exception e) {
                     Toast.makeText(this, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                 file = new File(imageuri.getPath());//create path from uri
+
                 ////file path
-                try {
-                    String[] projection = { MediaStore.Images.Media.DATA };
-                    Cursor cursor = getContentResolver().query(imageuri, projection, null, null, null);
-                    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                    cursor.moveToFirst();
-                    String filePath = cursor.getString(column_index);
-                    cursor.close();
-                    Toast.makeText(this, ""+filePath, Toast.LENGTH_SHORT).show();
-                    
-                }catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+
 
 
 
@@ -196,5 +192,119 @@ Uri imageuri;
 
 
 
+    }
+    int mWidth,mHeight;
+    String mStatus;
+    public String convertBitmap(Bitmap inputBitmap) {
+
+        mWidth = inputBitmap.getWidth();
+        mHeight = inputBitmap.getHeight();
+
+        convertArgbToGrayscale(inputBitmap, mWidth, mHeight);
+        mStatus = "ok";
+        return mStatus;
+    }
+BitSet dots;
+    private void convertArgbToGrayscale(Bitmap bmpOriginal, int width,
+                                        int height) {
+        int pixel;
+        int k = 0;
+        int B = 0, G = 0, R = 0;
+        dots = new BitSet();
+        try {
+
+            for (int x = 0; x < height; x++) {
+                for (int y = 0; y < width; y++) {
+                    // get one pixel color
+                    pixel = bmpOriginal.getPixel(y, x);
+
+                    // retrieve color of all channels
+                    R = Color.red(pixel);
+                    G = Color.green(pixel);
+                    B = Color.blue(pixel);
+                    // take conversion up to one single value by calculating
+                    // pixel intensity.
+                    R = G = B = (int) (0.299 * R + 0.587 * G + 0.114 * B);
+                    // set bit into bitset, by calculating the pixel's luma
+                    if (R < 55) {
+                        dots.set(k);//this is the bitset that i'm printing
+                    }
+                    k++;
+                }
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+           /// Log.e(TAG, e.toString());
+        }
+    }
+
+
+    private void print_image(String file) {
+       /*
+        File fl = new File(file);
+        if (fl.exists()) {
+            Bitmap bmp = BitmapFactory.decodeFile(file);
+            convertBitmap(bmp);
+            mService.write(PrinterCommands.SET_LINE_SPACING_24);
+
+            int offset = 0;
+            while (offset < bmp.getHeight()) {
+                mService.write(PrinterCommands.SELECT_BIT_IMAGE_MODE);
+                for (int x = 0; x < bmp.getWidth(); ++x) {
+
+                    for (int k = 0; k < 3; ++k) {
+
+                        byte slice = 0;
+                        for (int b = 0; b < 8; ++b) {
+                            int y = (((offset / 8) + k) * 8) + b;
+                            int i = (y * bmp.getWidth()) + x;
+                            boolean v = false;
+                            if (i < dots.length()) {
+                                v = dots.get(i);
+                            }
+                            slice |= (byte) ((v ? 1 : 0) << (7 - b));
+                        }
+                        mService.write(slice);
+                    }
+                }
+                offset += 24;
+                mService.write(PrinterCommands.FEED_LINE);
+                mService.write(PrinterCommands.FEED_LINE);
+                mService.write(PrinterCommands.FEED_LINE);
+                mService.write(PrinterCommands.FEED_LINE);
+                mService.write(PrinterCommands.FEED_LINE);
+                mService.write(PrinterCommands.FEED_LINE);
+            }
+            mService.write(PrinterCommands.SET_LINE_SPACING_30);
+
+
+        } else {
+            Toast.makeText(this, "file doesn't exists", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        */
+    }
+    private int[][] getPixelsSlow(Bitmap image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        int[][] result = new int[height][width];
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                result[row][col] = getRGB(image, col, row);
+            }
+        }
+
+        return result;
+    }
+
+    private int getRGB(Bitmap bmpOriginal, int col, int row) {
+        // get one pixel color
+        int pixel = bmpOriginal.getPixel(col, row);
+        // retrieve color of all channels
+        int R = Color.red(pixel);
+        int G = Color.green(pixel);
+        int B = Color.blue(pixel);
+        return Color.rgb(R, G, B);
     }
 }
