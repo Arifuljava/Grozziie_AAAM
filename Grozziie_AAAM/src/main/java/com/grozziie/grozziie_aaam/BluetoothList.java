@@ -7,26 +7,38 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.psp.bluetoothlibrary.Bluetooth;
 import com.psp.bluetoothlibrary.BluetoothListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.UUID;
+
+import es.dmoral.toasty.Toasty;
 
 public class BluetoothList extends AppCompatActivity {
     private static final String TAG = "psp.BluetoothAct";
@@ -303,6 +315,7 @@ public class BluetoothList extends AppCompatActivity {
                    /// adapterPairedBluetoothDevices.notifyDataSetChanged();
                     String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
                     if (defaultlanguage.toLowerCase().toString().equals("english")) {
+                        String mac=listPairedBluetoothDevices.get(position).getAddress();
                         String mesge="Device Name : "+listPairedBluetoothDevices.get(position).getName()+"\n" +
                                 "Device MAC Address : "+listPairedBluetoothDevices.get(position).getAddress();
                         AlertDialog.Builder builder=new AlertDialog.Builder(BluetoothList.this);
@@ -317,8 +330,65 @@ public class BluetoothList extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                            if (listPairedBluetoothDevices.get(position).getName().toLowerCase().equals("ac695x_1")) {
-                                Toast.makeText(BluetoothList.this, ""+listPairedBluetoothDevices.get(position).getName().toLowerCase(), Toast.LENGTH_SHORT).show();
+                            if (listPairedBluetoothDevices.get(position).getName().toLowerCase().equals("ac695x_1")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gd610")||
+                            listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gd620")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gzp660")
+                            || listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("tjyd600")|| listDetectBluetoothDevices.get(position)
+                            .getName().toLowerCase().equals("tjyd610")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("tjyd620")) {
+
+                                Dialog dialogue=new Dialog(BluetoothList.this);
+
+                                dialogue.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                dialogue.setContentView(R.layout.blue_layout);
+                                dialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                                TextView name56=(TextView)dialogue.findViewById(R.id.name);
+                                name56.setText(listPairedBluetoothDevices.get(position).getName().toString());
+                                EditText pwd1111=(EditText)dialogue.findViewById(R.id.pwd__1);
+                                pwd1111.setText(mac);
+                                TextView confirm1111=(TextView)dialogue.findViewById(R.id.confirm);
+                                FloatingActionButton dialogClose=(FloatingActionButton)dialogue.findViewById(R.id.dialogClose);
+                                dialogClose.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogue.dismiss();
+                                    }
+                                });
+                                confirm1111.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        BluetoothSocket bluetoothSocket;
+                                        BluetoothAdapter bluetoothAdapter;
+                                        BluetoothDevice device;
+                                        try {
+                                            BluetoothManager bluetoothManager;
+                                            bluetoothManager=(BluetoothManager)getSystemService(BLUETOOTH_SERVICE);
+                                            bluetoothAdapter=bluetoothManager.getAdapter();
+                                            if (!bluetoothAdapter.isEnabled()) {
+                                                Toast.makeText(BluetoothList.this, "Please turn on bluetooth", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                device=bluetoothAdapter.getRemoteDevice(mac);
+                                                bluetoothSocket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+                                                bluetoothSocket.connect();
+                                                if (bluetoothSocket.isConnected()) {
+                                                    Toast.makeText(BluetoothList.this, "Connected", Toast.LENGTH_SHORT).show();
+                                                }
+                                                else {
+                                                    Toast.makeText(BluetoothList.this, "Not Connected", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+
+
+                                        }catch (Exception e) {
+                                        }
+
+                                    }
+                                });
+
+                                dialogue.show();
+
+
+                                return;
                             }
                             }
                         }).create();

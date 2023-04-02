@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/comment_dialog_view"
+    android:layout_width="300dp"
+    android:layout_height="280dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="30dp"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/title_comment_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:theme="@style/CardView.Light"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="Add Payment Method"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/CardView.Light"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_comment_card">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:background="@drawable/shape_dialog"
+                            android:gravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Bluetooth Printer Details"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                            <EditText
+                                android:id="@+id/pwd__1"
+                                android:layout_width="247dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+
+                                android:hint="@string/wif_pwd_hint"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/montserrat"
+                                android:textStyle="normal"
+                                android:textAlignment="center"
+
+                                />
+
+                            <TextView
+                                android:id="@+id/confirm"
+                                android:background="@drawable/shape_scan_bg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginEnd="8dp"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/montserrat"
+                                android:textStyle="normal"
+                                android:textAlignment="center"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingLeft="40dp"
+                                android:paddingRight="40dp"
+                                android:textColor="@color/white"
+                                android:text="Connect"
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+            </androidx.cardview.widget.CardView>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/dialogClose"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/red_connectify"
+                android:src="@drawable/dialog_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
