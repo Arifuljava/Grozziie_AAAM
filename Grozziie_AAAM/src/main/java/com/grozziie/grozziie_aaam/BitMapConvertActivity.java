@@ -250,7 +250,7 @@ public class BitMapConvertActivity extends AppCompatActivity {
     }
     CountDownTimer countDownTimer,countDownTimer1;
     private  byte[]  BitmapToRGBbyte(Bitmap bitmapOrg) {
-    /*
+
         ArrayList<Byte> Gray_ArrayList;
         Gray_ArrayList =new ArrayList<Byte>();
         int height = 1080;
@@ -351,10 +351,12 @@ public class BitMapConvertActivity extends AppCompatActivity {
 
         }
         return null;
-     */
+
+     /*
         BitmapConverter bitmapConverter = new BitmapConverter();
         byte [] bmpFile = bitmapConverter.convert(bitmapOrg, BitmapFormat.BITMAP_8_BIT_COLOR);
         return bmpFile;
+      */
     }
 
 

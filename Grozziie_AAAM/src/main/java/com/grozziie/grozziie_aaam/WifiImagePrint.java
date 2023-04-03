@@ -42,6 +42,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.UUID;
 
@@ -104,6 +105,7 @@ Uri imageuri;
                     Cursor cursor=contentResolver.query(imageuri,null,null,null,null);
                     Toast.makeText(this, "ff"+getPixelsSlow(bitmap), Toast.LENGTH_SHORT).show();
 
+
                   //  Toast.makeText(this, ""+displayName, Toast.LENGTH_SHORT).show();
 
 
@@ -138,7 +140,8 @@ Uri imageuri;
 
     public void pickimageee(View view) {
       try {
-          /*
+
+        /*
           ContentResolver resolver=getContentResolver();
           InputStream inputStream=resolver.openInputStream(imageuri);
           Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
@@ -147,6 +150,10 @@ Uri imageuri;
           photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
 
           photoPrinter.printBitmap(" "+displayName+"-  print", bitmap);
+         */
+
+          /*
+
            */
           BluetoothSocket bluetoothSocket;
           BluetoothAdapter bluetoothAdapter;
@@ -186,7 +193,6 @@ Uri imageuri;
 
           }catch (Exception e) {
           }
-
       }catch (Exception e) {
       }
 
@@ -203,6 +209,115 @@ Uri imageuri;
         convertArgbToGrayscale(inputBitmap, mWidth, mHeight);
         mStatus = "ok";
         return mStatus;
+    }
+    private  byte[]  BitmapToRGBbyte(Bitmap bitmapOrg) {
+
+        ArrayList<Byte> Gray_ArrayList;
+        Gray_ArrayList =new ArrayList<Byte>();
+        int height = 1080;
+        if(bitmapOrg.getHeight()>height)
+        {
+            height=1080;
+        }
+        else
+        {
+            height=bitmapOrg.getHeight();
+        }
+        int width = 384;
+        int R = 0, B = 0, G = 0;
+        int pixles;
+        int x = 0, y = 0;
+        Byte[] Gray_Send;
+        //bitSet = new BitSet();
+        try {
+            int k = 0;
+            int Send_i = 0;
+            int x_GetR;
+            for (x = 0; x < height; x++) {
+                k=0;
+                for (y = 0; y < width; y++) {
+                    pixles = bitmapOrg.getPixel(x, y);
+                    R = Color.red(pixles);
+                    G = Color.green(pixles);
+                    B = Color.blue(pixles);
+                    //setcolor
+                    R = G = B = (int) ((0.299 * R) + (0.587 * G) + (0.114 * B));
+
+                    if (R < 120) {
+                        //bitSet.set(k);
+                        x_GetR = 0;
+                    } else {
+                        x_GetR = 1;
+
+                    }
+                    ///texting cde
+                    k++;
+                    if (k == 1) {
+                        Send_i=0;
+                        Send_i = Send_i + x_GetR | 0x80;
+
+                    } else if (k == 2) {
+
+                        Send_i = Send_i + x_GetR | 0x40;
+
+                    } else if (k == 3) {
+
+                        Send_i = Send_i + x_GetR | 0x20;
+
+                    } else if (k == 4) {
+
+                        Send_i = Send_i + x_GetR | 0x10;
+
+                    } else if (k == 5) {
+
+                        Send_i = Send_i + x_GetR | 0x08;
+
+                    } else if (k == 6) {
+
+                        Send_i = Send_i + x_GetR | 0x04;
+
+                    } else if (k == 7) {
+
+                        Send_i = Send_i + x_GetR | 0x02;
+
+                    } else if (k == 8) {
+
+                        Send_i = Send_i + x_GetR | 0x01;
+
+                        Gray_ArrayList.add((byte) Send_i);
+                        Send_i = 0;
+                        k = 0;
+                        // byte b = (byte) Send_i; // replace with your byte value
+
+                        //i control it
+
+
+                    }
+
+
+                    /////////////////////=====================================
+
+
+                }
+            }
+
+            byte[] sss=new byte[Gray_ArrayList.size()];
+            Gray_Send=new Byte[Gray_ArrayList.size()];
+            Gray_ArrayList.toArray(Gray_Send);
+            for(int xx=0;xx<Gray_Send.length;xx++){
+                sss[xx]=Gray_Send[xx];
+            }
+            return  sss;
+        } catch (Exception e) {
+
+        }
+        return null;
+
+     /*
+        BitmapConverter bitmapConverter = new BitmapConverter();
+        byte [] bmpFile = bitmapConverter.convert(bitmapOrg, BitmapFormat.BITMAP_8_BIT_COLOR);
+        return bmpFile;
+      */
     }
 BitSet dots;
     private void convertArgbToGrayscale(Bitmap bmpOriginal, int width,

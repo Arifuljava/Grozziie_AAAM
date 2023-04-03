@@ -30,7 +30,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application>
-        <activity android:name=".WifiImagePrint"></activity>
+        <activity android:name=".wifi.WifiPrinList"></activity>
+        <activity android:name=".wifi.WifiWebPagePrint" />
+        <activity android:name=".wifi.WifiPrintPdf" />
+        <activity android:name=".wifi.WifiImagePrint" />
+        <activity android:name=".WifiPrinterCategory" />
+        <activity android:name=".WifiImagePrint" />
         <activity android:name=".BitMapConvertActivity" />
         <activity android:name=".MainActivit33" />
         <activity android:name=".wifi.AllWifiList" />

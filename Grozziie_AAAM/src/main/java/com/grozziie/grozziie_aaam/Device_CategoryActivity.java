@@ -265,6 +265,6 @@ Button button_bluetooth,button_wifi,button_cloud;
     }
 
     public void cloud(View view) {
-        startActivity(new Intent(getApplicationContext(), WifiImagePrint.class));
+        startActivity(new Intent(getApplicationContext(), WifiPrinterCategory.class));
     }
 }

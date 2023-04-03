@@ -126,7 +126,7 @@
                                 android:paddingLeft="40dp"
                                 android:paddingRight="40dp"
                                 android:textColor="@color/white"
-                                android:text="Connect"
+                                android:text="Print Now"
                                 />
 
 

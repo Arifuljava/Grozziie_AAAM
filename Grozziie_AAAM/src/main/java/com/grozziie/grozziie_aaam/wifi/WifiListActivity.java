@@ -17,6 +17,7 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grozziie.grozziie_aaam.R;
+import com.grozziie.grozziie_aaam.WifiPrinterCategory;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import android.Manifest;
@@ -249,11 +250,11 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
             String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
             if (defaultlanguage.toLowerCase().toString().equals("english")) {
                 pwd.setHint("Please enter password");
-                confirm.setText("Confirm");
+                confirm.setText("Print Now");
             }
             else {
                 pwd.setHint("请输入密码");
-                confirm.setText("确认");
+                confirm.setText("立即打印");
             }
 
             dialogClose.setOnClickListener(new View.OnClickListener() {
@@ -279,6 +280,12 @@ public class WifiListActivity extends FragmentActivity implements AdapterView.On
 
                     }
                     else {
+                       Intent intent=new Intent(getApplicationContext(), WifiPrinterCategory.class);
+                       intent.putExtra("wifi_name",name.getText().toString());
+                        intent.putExtra("wifi_ipaddress",pwd.getText().toString());
+                       /// Toast.makeText(WifiListActivity.this, name.getText().toString()+""+pwd.getText().toString(), Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+
                     }
 
 
