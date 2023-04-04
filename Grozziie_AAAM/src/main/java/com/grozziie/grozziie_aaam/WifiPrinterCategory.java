@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.grozziie.grozziie_aaam.wifi.WifiImagePrint;
 import com.grozziie.grozziie_aaam.wifi.WifiPrintPdf;
 import com.grozziie.grozziie_aaam.wifi.WifiWebPagePrint;
+import com.grozziie.grozziie_aaam.wifi.Wifi_CreatePdfActivity;
 
 import java.util.Locale;
 
@@ -194,6 +195,7 @@ String wifi_name,wifi_ipaddress;
                                 if (which==0) {
                                 }
                                 else if(which==1) {
+                                    startActivity(new Intent(getApplicationContext(), Wifi_CreatePdfActivity.class));
                                 }
                                 else if(which==2) {
                                 }

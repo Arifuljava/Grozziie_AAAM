@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".wifi.Wifi_CreatePdfActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/gradientbackgroud">
+
+        </androidx.appcompat.widget.Toolbar>
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                >
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    >
+                                  <androidx.core.widget.NestedScrollView
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      >
+                                      <EditText
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginLeft="30dp"
+                                          android:layout_marginRight="30dp"
+                                          android:layout_marginTop="20dp"
+                                          android:layout_marginBottom="30dp"
+                                          android:id="@+id/witepdf_text"
+                                          android:inputType="textMultiLine"
+                                          android:background="@drawable/edit_text_background"
+                                          android:hint="Enter details about  pdf"
+                                          android:textColor="#000"
+                                          android:textSize="12dp"
+                                          android:textAllCaps="false"
+                                          android:textAlignment="center"
+                                          android:layout_gravity="center"
+                                          android:gravity="center"
+                                          android:minHeight="100dp"
+                                          ></EditText>
+                                  </androidx.core.widget.NestedScrollView>
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:layout_marginBottom="250dp"
+                                     android:layout_marginTop="0dp"
+                                        android:text="Create"
+                                        android:textAlignment="center"
+                                        android:textAllCaps="false"
+                                        android:textSize="12dp"
+                                        android:textColor="@color/white"
+                                        android:textStyle="normal"
+                                        android:id="@+id/create_pdfff"
+
+                                        android:layout_marginRight="30dp"
+                                        android:layout_marginLeft="30dp"
+                                        android:background="@drawable/button2"
+                                        ></Button>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
