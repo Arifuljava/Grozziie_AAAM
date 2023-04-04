@@ -8,5 +8,5 @@ It is a library package for connecting bluetooth,Wifi , USB and cloud printer on
 [MIT License] 
 MIT License
 
-Copyright (c) 2023 Arifuljava
+Copyright (c) 2023 Ariful Islam
 
