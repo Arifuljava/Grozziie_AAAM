@@ -185,7 +185,7 @@ String wifi_name,wifi_ipaddress;
 
             if (defaultlanguage.toLowerCase().toString().equals("english")) {
 
-                String op[]={"Print Testing PDF","Create Pdf and Print","Print From File"};
+                String op[]={"Print Testing PDF","Print From File"};
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(WifiPrinterCategory.this);
                 builder.setTitle("Pdf Printing Section")
@@ -195,9 +195,8 @@ String wifi_name,wifi_ipaddress;
                                 if (which==0) {
                                 }
                                 else if(which==1) {
-                                    startActivity(new Intent(getApplicationContext(), Wifi_CreatePdfActivity.class));
-                                }
-                                else if(which==2) {
+                                    startActivity(new Intent(getApplicationContext(),WifiPrintPdf.class));
+
                                 }
 
                             }
@@ -207,7 +206,7 @@ String wifi_name,wifi_ipaddress;
             }
             else {
 
-                String op[]={"打印测试 PDF","创建 PDF 并打印","从文件打印"};
+                String op[]={"打印测试 PDF","从文件打印"};
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(WifiPrinterCategory.this);
                 builder.setTitle("PDF打印部")
@@ -217,8 +216,6 @@ String wifi_name,wifi_ipaddress;
                                 if (which==0) {
                                 }
                                 else if(which==1) {
-                                }
-                                else if(which==2) {
                                 }
 
                             }

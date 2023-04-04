@@ -52,6 +52,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.karumi:dexter:6.2.3'
    ////for bitmap
     implementation 'com.github.yoanngoular:bitmapconverter:0.2.0'
     ///for wifi

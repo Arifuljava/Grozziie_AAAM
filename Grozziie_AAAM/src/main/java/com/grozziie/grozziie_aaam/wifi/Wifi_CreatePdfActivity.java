@@ -38,9 +38,10 @@ Button create_pdfff;
             create_pdfff.setText("Create");
         }
         else {
-            create_pdfff.setText("");
-            toolbar.setTitle("输入有关 pdf 的详细信息");
-            witepdf_text.setHint("创造");
+            witepdf_text.setText("输入有关 pdf 的详细信息");
+             toolbar.setTitle("打印对象");
+            create_pdfff.setText("创造");
+
         }
 
         toolbar.setTitleTextColor(Color.WHITE);
@@ -54,7 +55,7 @@ Button create_pdfff;
         create_pdfff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pdfff=create_pdfff.getText().toString(); 
+                String pdfff=witepdf_text.getText().toString();
                 if (TextUtils.isEmpty(pdfff)) {
                     String  defaultlanguage= Locale.getDefault().getDisplayLanguage();
 
@@ -70,6 +71,7 @@ Button create_pdfff;
                     }
                 }
                 else {
+
                 }
             }
         });

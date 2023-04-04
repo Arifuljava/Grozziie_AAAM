@@ -104,11 +104,10 @@
                       android:layout_marginRight="30dp"
                       android:layout_marginLeft="30dp"
                       android:text="Cloud Printing"
-                      android:backgroundTint="#355C7D"
                       android:textAllCaps="false"
                       android:textSize="12dp"
                       android:onClick="cloud"
-                      android:background="@drawable/button2"
+                      android:background="@drawable/button7"
                       android:textStyle="normal"
                       ></Button>
 
