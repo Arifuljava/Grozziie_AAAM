@@ -1,6 +1,7 @@
 package com.grozziie.grozziie_aaam;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.MultiDex;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -26,6 +27,7 @@ public class InitilizeSDKActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initilize_s_d_k);
+        MultiDex.install(InitilizeSDKActivity.this);
         Dialog mDialouge=new Dialog(InitilizeSDKActivity.this);
         mDialouge.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialouge.setContentView(R.layout.initilizeallinformation);

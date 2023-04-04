@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grozziie.grozziie_aaam.wifi.AllWifiList;
+import com.grozziie.grozziie_aaam.wifi.Wifi;
 import com.grozziie.grozziie_aaam.wifi.WifiListActivity;
 import com.tapadoo.alerter.Alert;
 
@@ -265,6 +266,6 @@ Button button_bluetooth,button_wifi,button_cloud;
     }
 
     public void cloud(View view) {
-        startActivity(new Intent(getApplicationContext(), WifiPrinterCategory.class));
+        startActivity(new Intent(getApplicationContext(), WifiImagePrint.class));
     }
 }

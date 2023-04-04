@@ -153,9 +153,7 @@ Uri imageuri;
          */
 
           /*
-
-           */
-          BluetoothSocket bluetoothSocket;
+   BluetoothSocket bluetoothSocket;
           BluetoothAdapter bluetoothAdapter;
           BluetoothDevice device;
           try {
@@ -193,6 +191,9 @@ Uri imageuri;
 
           }catch (Exception e) {
           }
+           */
+          String printermac="c8:9e:43:a0:09:84";
+
       }catch (Exception e) {
       }
 
