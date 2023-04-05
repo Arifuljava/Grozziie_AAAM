@@ -55,6 +55,8 @@ Uri imageuri;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_image_print);
+        WifiGettingError wifiGettingError=new WifiGettingError(WifiImagePrint.this);
+        wifiGettingError.ischeckinError("454545454");
         pick_image_loader=findViewById(R.id.pick_image_loader);
         sendButton=findViewById(R.id.sendButton);
         pick_image_loader.setOnClickListener(new View.OnClickListener() {
