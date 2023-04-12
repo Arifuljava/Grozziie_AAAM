@@ -9,21 +9,27 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.karumi.dexter.Dexter;
@@ -37,6 +43,7 @@ import com.ygoular.bitmapconverter.BitmapConverter;
 import com.ygoular.bitmapconverter.BitmapFormat;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -133,7 +140,13 @@ public class BitMapConvertActivity extends AppCompatActivity {
     OutputStream os = null;
     private void printImage()
     {
-        final Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.imagepost);
+        String imagePathString =newDrawableUri.getPath();
+        File imageFile = new File(imagePathString);
+       /// Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+       // Toast.makeText(this, ""+bitmap, Toast.LENGTH_SHORT).show();
+      final Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.imagepost);
+
+        Toast.makeText(this, ""+bitmap, Toast.LENGTH_SHORT).show();
         final byte[] bitmapGetByte=BitmapToRGBbyte(bitmap);
         String BlueMac="AD:24:92:48:DB:7F";
         mBluetoothManager= (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
@@ -394,7 +407,7 @@ public class BitMapConvertActivity extends AppCompatActivity {
             try {
                 File path= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                 bitmapUri = data.getData();
-
+                handleGalleryIntent(data);
 
 
                 try {
@@ -409,6 +422,47 @@ public class BitMapConvertActivity extends AppCompatActivity {
         }
 
     }
+
+    Bitmap bitmaphh;
+    private void handleGalleryIntent(Intent data) {
+        // Get the URI of the selected image
+        Uri selectedImage = data.getData();
+        // Get a Bitmap object from the selected image
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Create a new Drawable object from the Bitmap
+        Drawable drawable = new BitmapDrawable(getResources(), bitmap);
+        // Get the resources object
+        Resources resources = getResources();
+        // Get the name of the new drawable resource
+        String resourceName = "new_image_image";
+        // Get the identifier of the drawable resource
+        int resourceId = resources.getIdentifier(resourceName, "drawable", getPackageName());
+        // Save the drawable to a file in the drawable directory
+        try {
+            FileOutputStream outputStream = openFileOutput(resourceName + ".png", Context.MODE_PRIVATE);
+
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        // Add the new drawable resource to the drawable directory
+        File newDrawableFile = new File(getFilesDir(), resourceName + ".png");
+
+        newDrawableUri = Uri.fromFile(newDrawableFile);
+        Toast.makeText(this, ""+newDrawableUri, Toast.LENGTH_SHORT).show();
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        mediaScanIntent.setData(newDrawableUri);
+        sendBroadcast(mediaScanIntent);
+    }
+    Uri newDrawableUri;
     int PICK=12;
     boolean request=false;
 }

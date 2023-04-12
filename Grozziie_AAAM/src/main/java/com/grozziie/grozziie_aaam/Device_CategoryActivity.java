@@ -268,6 +268,6 @@ Button button_bluetooth,button_wifi,button_cloud;
     }
 
     public void cloud(View view) {
-        startActivity(new Intent(getApplicationContext(), MainActivity_ImagePrnting.class));
+        startActivity(new Intent(getApplicationContext(), BitMapConvertActivity.class));
     }
 }
