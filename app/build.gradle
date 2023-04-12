@@ -10,7 +10,7 @@ android {
         }
     }
     compileSdkVersion 32
-    //buildToolsVersion "33.0.2"
+    buildToolsVersion "33.0.2"
     lintOptions {
         checkReleaseBuilds false
     }
@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+
+     ///   implementation 'com.github.Arifuljava:Grozziie_AAAM:v1.0.1'
     implementation project("::Grozziie_AAAM")
 
    /// implementation 'com.github.Arifuljava:Grozziie_AAAM:v1.0.0'

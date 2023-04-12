@@ -28,6 +28,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:exported="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -39,7 +40,8 @@
         <activity android:name="com.grozziie.grozziie_aaam.BluetoothList" />
         <activity android:name="com.grozziie.grozziie_aaam.InitilizeSDKActivity" />
         <activity android:name="com.grozziie.grozziie_aaam.Device_CategoryActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
