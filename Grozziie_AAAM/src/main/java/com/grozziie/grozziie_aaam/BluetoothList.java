@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.grozziie.grozziie_aaam.print_bluetooth.BluetoothImagePrinting;
 import com.psp.bluetoothlibrary.Bluetooth;
 import com.psp.bluetoothlibrary.BluetoothListener;
 
@@ -326,66 +327,18 @@ public class BluetoothList extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
 
                                     }
-                                }).setNegativeButton("YES CONNECT NOW", new DialogInterface.OnClickListener() {
+                                }).setNegativeButton("YES CONTINUE NOW", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             if (listPairedBluetoothDevices.get(position).getName().toLowerCase().equals("ac695x_1")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gd610")||
                             listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gd620")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("gzp660")
                             || listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("tjyd600")|| listDetectBluetoothDevices.get(position)
-                            .getName().toLowerCase().equals("tjyd610")||listDetectBluetoothDevices.get(position).getName().toLowerCase().equals("tjyd620")) {
-
-                                Dialog dialogue=new Dialog(BluetoothList.this);
-
-                                dialogue.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                                dialogue.setContentView(R.layout.blue_layout);
-                                dialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                                TextView name56=(TextView)dialogue.findViewById(R.id.name);
-                                name56.setText(listPairedBluetoothDevices.get(position).getName().toString());
-                                EditText pwd1111=(EditText)dialogue.findViewById(R.id.pwd__1);
-                                pwd1111.setText(mac);
-                                TextView confirm1111=(TextView)dialogue.findViewById(R.id.confirm);
-                                FloatingActionButton dialogClose=(FloatingActionButton)dialogue.findViewById(R.id.dialogClose);
-                                dialogClose.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialogue.dismiss();
-                                    }
-                                });
-                                confirm1111.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        BluetoothSocket bluetoothSocket;
-                                        BluetoothAdapter bluetoothAdapter;
-                                        BluetoothDevice device;
-                                        try {
-                                            BluetoothManager bluetoothManager;
-                                            bluetoothManager=(BluetoothManager)getSystemService(BLUETOOTH_SERVICE);
-                                            bluetoothAdapter=bluetoothManager.getAdapter();
-                                            if (!bluetoothAdapter.isEnabled()) {
-                                                Toast.makeText(BluetoothList.this, "Please turn on bluetooth", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else {
-                                                device=bluetoothAdapter.getRemoteDevice(mac);
-                                                bluetoothSocket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
-                                                bluetoothSocket.connect();
-                                                if (bluetoothSocket.isConnected()) {
-                                                    Toast.makeText(BluetoothList.this, "Connected", Toast.LENGTH_SHORT).show();
-                                                }
-                                                else {
-                                                    Toast.makeText(BluetoothList.this, "Not Connected", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
+                            .getName().toLowerCase().equals("tjyd610")||listDetectBluetoothDevices.get(position).
+                                    getName().toLowerCase().equals("tjyd620")) {
+                                startActivity(new Intent(getApplicationContext(), PrintBluetoothcategory.class));
 
 
-                                        }catch (Exception e) {
-                                        }
-
-                                    }
-                                });
-
-                                dialogue.show();
 
 
                                 return;

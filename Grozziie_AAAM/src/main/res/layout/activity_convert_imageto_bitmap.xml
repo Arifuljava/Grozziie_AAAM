@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConvertImagetoBitmapActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical"
+               >
+              <RelativeLayout
+                  android:layout_marginTop="20dp"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  >
+                  <ImageView
+
+                      android:layout_width="250dp"
+                      android:layout_height="150dp"
+                      android:src="@drawable/image"
+                      android:layout_centerInParent="true"
+                      android:layout_centerVertical="true"
+                      android:layout_centerHorizontal="true"
+                      android:padding="4dp"
+                      android:layout_marginBottom="20dp"
+                      android:id="@+id/selectImage"
+                      ></ImageView>
+              </RelativeLayout>
+               <Button
+                   android:id="@+id/convertimage"
+                   android:layout_width="match_parent"
+                   android:layout_height="50sp"
+                   android:layout_marginBottom="@dimen/margin_eight"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:text="Convert to Bitmap"
+                   android:background="@drawable/button"
+                   android:textAlignment="center"
+                   android:textColor="@color/white"
+                   android:textAllCaps="false"
+                   >
+
+               </Button>
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   >
+                   <ImageView
+                       android:layout_width="250dp"
+                       android:layout_height="150dp"
+                       android:layout_centerHorizontal="true"
+                       android:layout_centerVertical="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/photo"
+                       android:padding="4dp"
+                       android:layout_marginBottom="20dp"
+                       android:id="@+id/uploadedimage"
+                       ></ImageView>
+               </RelativeLayout>
+           </LinearLayout>
+
+       </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.grozziie.grozziie_aaam">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -30,7 +31,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application android:usesCleartextTraffic="true">
-        <activity android:name=".wifi.Wifi_CreatePdfActivity"></activity>
+        <activity android:name=".print_bluetooth.PrintPageImage"></activity>
+        <activity android:name=".print_bluetooth.BluetoothImagePrinting" />
+        <activity android:name=".PrintBluetoothcategory" />
+        <activity android:name=".DeviceList" />
+        <activity android:name=".MainActivity_ImagePrnting" />
+        <activity android:name=".DefaultPrintingSection" />
+        <activity android:name=".ConvertImagetoBitmapActivity" />
+        <activity android:name=".ImageSimplePrinting" />
+        <activity android:name=".wifi.Wifi_CreatePdfActivity" />
         <activity android:name=".wifi.WifiPrinList" />
         <activity android:name=".wifi.WifiWebPagePrint" />
         <activity android:name=".wifi.WifiPrintPdf" />

@@ -1,4 +1,4 @@
-package com.grozziie.grozziie_aaam.print_bluetooth;
+package com.grozziie.grozziie_aaam;
 
 import android.graphics.Bitmap;
 import android.util.Log;
@@ -6,36 +6,35 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BitmapHelper {
 
-    private static String[] binaryArray = {"0000", "0001", "0010", "0011",
+public class Utils {
+    // UNICODE 0x23 = #
+    public static final byte[] UNICODE_TEXT = new byte[] {0x23, 0x23, 0x23,
+            0x23, 0x23, 0x23,0x23, 0x23, 0x23,0x23, 0x23, 0x23,0x23, 0x23, 0x23,
+            0x23, 0x23, 0x23,0x23, 0x23, 0x23,0x23, 0x23, 0x23,0x23, 0x23, 0x23,
+            0x23, 0x23, 0x23};
+
+    private static String hexStr = "0123456789ABCDEF";
+    private static String[] binaryArray = { "0000", "0001", "0010", "0011",
             "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011",
-            "1100", "1101", "1110", "1111"};
+            "1100", "1101", "1110", "1111" };
 
-    public  byte[] decodeBitmap(Bitmap bmp) {
-        //Bitmap bmp = Bitmap.createScaledBitmap(bitmap, 50, 50, false);
-        int maxWidth = 350;
-
+    public static byte[] decodeBitmap(Bitmap bmp){
         int bmpWidth = bmp.getWidth();
         int bmpHeight = bmp.getHeight();
 
-        if (bmpWidth > maxWidth) {
-            float aspectRatio = bmp.getWidth() /
-                    (float) bmp.getHeight();
-            bmpWidth = maxWidth;
-            bmpHeight = Math.round(bmpWidth / aspectRatio);
-            bmp = Bitmap.createScaledBitmap(bmp, bmpWidth, bmpHeight, false);
-        }
-
-        List<String> list = new ArrayList<>(); //binaryString list
+        List<String> list = new ArrayList<String>(); //binaryString list
         StringBuffer sb;
 
+
+        int bitLen = bmpWidth / 8;
         int zeroCount = bmpWidth % 8;
 
-        StringBuilder zeroStr = new StringBuilder();
+        String zeroStr = "";
         if (zeroCount > 0) {
+            bitLen = bmpWidth / 8 + 1;
             for (int i = 0; i < (8 - zeroCount); i++) {
-                zeroStr.append("0");
+                zeroStr = zeroStr + "0";
             }
         }
 
@@ -82,14 +81,14 @@ public class BitmapHelper {
         }
         heightHexString = heightHexString + "00";
 
-        List<String> commandList = new ArrayList<>();
-        commandList.add(commandHexString + widthHexString + heightHexString);
+        List<String> commandList = new ArrayList<String>();
+        commandList.add(commandHexString+widthHexString+heightHexString);
         commandList.addAll(bmpHexList);
 
         return hexList2Byte(commandList);
     }
 
-    private static List<String> binaryListToHexStringList(List<String> list) {
+    public static List<String> binaryListToHexStringList(List<String> list) {
         List<String> hexList = new ArrayList<String>();
         for (String binaryStr : list) {
             StringBuffer sb = new StringBuffer();
@@ -102,34 +101,36 @@ public class BitmapHelper {
             hexList.add(sb.toString());
         }
         return hexList;
+
     }
 
-    private static String myBinaryStrToHexString(String binaryStr) {
-        StringBuilder hex = new StringBuilder();
+    public static String myBinaryStrToHexString(String binaryStr) {
+        String hex = "";
         String f4 = binaryStr.substring(0, 4);
         String b4 = binaryStr.substring(4, 8);
-        String hexStr = "0123456789ABCDEF";
         for (int i = 0; i < binaryArray.length; i++) {
             if (f4.equals(binaryArray[i]))
-                hex.append(hexStr.substring(i, i + 1));
+                hex += hexStr.substring(i, i + 1);
         }
         for (int i = 0; i < binaryArray.length; i++) {
             if (b4.equals(binaryArray[i]))
-                hex.append(hexStr.substring(i, i + 1));
+                hex += hexStr.substring(i, i + 1);
         }
 
-        return hex.toString();
+        return hex;
     }
 
-    private static byte[] hexList2Byte(List<String> list) {
+    public static byte[] hexList2Byte(List<String> list) {
         List<byte[]> commandList = new ArrayList<byte[]>();
+
         for (String hexStr : list) {
             commandList.add(hexStringToBytes(hexStr));
         }
-        return sysCopy(commandList);
+        byte[] bytes = sysCopy(commandList);
+        return bytes;
     }
 
-    private static byte[] hexStringToBytes(String hexString) {
+    public static byte[] hexStringToBytes(String hexString) {
         if (hexString == null || hexString.equals("")) {
             return null;
         }
@@ -144,7 +145,7 @@ public class BitmapHelper {
         return d;
     }
 
-    private static byte[] sysCopy(List<byte[]> srcArrays) {
+    public static byte[] sysCopy(List<byte[]> srcArrays) {
         int len = 0;
         for (byte[] srcArray : srcArrays) {
             len += srcArray.length;
